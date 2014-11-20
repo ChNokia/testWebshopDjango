@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^index/', include('webshop.urls')),
     url(r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('tinymce.urls')),
+    url(r'^auth/', include('loginsys.urls')),
 )# + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
 if settings.DEBUG:

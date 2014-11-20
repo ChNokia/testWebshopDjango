@@ -4,6 +4,7 @@ from django.db import models
 import datetime
 import random
 from django.conf import settings
+from django.contrib import auth
 #from mptt.models import MPTTModel, TreeForeignKey
 from tinymce import models as tinymce_model
 
@@ -44,6 +45,8 @@ class Category(models.Model):
 	photo = models.ImageField(upload_to = make_upload_path, default = "", blank = True,
 							verbose_name = "Зображення")
 	published = models.BooleanField(verbose_name = u"Опубліковано") 
+	date_add = models.DateTimeField(default = datetime.datetime.now(), auto_now_add = True,
+									verbose_name = "Дата створення")
 	orderin = models.IntegerField(default = 0, blank = True, null = True,
 								verbose_name = u"Порядок сортування")
 
@@ -93,6 +96,8 @@ class Product(models.Model):
 	published = models.BooleanField(verbose_name = u"Опубліковано") 
 	orderin = models.IntegerField(default = 0, blank = True, null = True,
 								verbose_name = u"Порядок сортування")
+	date_add = models.DateTimeField(default = datetime.datetime.now(), auto_now_add = True,
+									verbose_name = "Дата створення")
 	manufacturer = models.CharField(max_length = 300,
 									blank = True)
 	price_in_ua = models.DecimalField(max_digits = 6,
@@ -149,8 +154,10 @@ class ProductImages(models.Model):
 
 class Customer(models.Model):
 	name = models.CharField(max_length = 150, blank = True, verbose_name = "Користувач")
+	#user = models.ForeignKey(User)
 	email = models.EmailField(max_length = 254, blank = True, verbose_name = "Email")
 	password = models.CharField(max_length = 250, blank = True, verbose_name = "Пароль")
 	discaunt = models.DecimalField(max_digits = 4, default = 0, decimal_places = 2)
-	date_created = models.DateTimeField()
+	date_created = models.DateTimeField(default = datetime.datetime.now(), auto_now_add = True,
+										verbose_name = "Дата регістрації")
 	date_visited = models.DateTimeField()

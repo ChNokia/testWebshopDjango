@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webshop',
+    'loginsys',
     'tinymce',
     'south',
 )
@@ -85,10 +86,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/ubuntu/Desktop/Form_files/myShop/webshop/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'webshop/static/')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/ubuntu/Desktop/Form_files/myShop/webshop/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'webshop/media/')#BASE_DIR + '/webshop/media/'
 MEDIA_URL = '/media/'
 
 TINYMCE_JS_URL = MEDIA_URL + "tinymce/media/tiny_mce/tiny_mce.js"
@@ -194,6 +195,10 @@ SUIT_CONFIG = {
         ]},
     )
 }
+
+TEMPLATE_DIRS = (
+    BASE_DIR + 'loginsys/templates',
+)
 #STATICFILES_DIRS = (
  #   '/home/ubuntu/Desktop/Form_files/myShop/',
 #)

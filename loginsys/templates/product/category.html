@@ -1,0 +1,15 @@
+{% extends "product/base.html" %}
+{% block content %}
+	<ul class="gallery">
+		{% for object in object_list %}
+			<li><a href={% url webshop.views.products object.id %}>
+				{% load staticfiles %}
+				<img src="{% static object.photo.url %}" alt="" title="{{ object.name }}" width="68" height="124" border="0"/></a>
+				<br>
+				{{ object.name }}
+				{{object.manufacturer}}<br />
+				{{object.price_in_ua}} грн<br />
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
