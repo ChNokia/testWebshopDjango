@@ -1,0 +1,337 @@
+body ,ul, h1, h2, p
+{
+	padding:0 ;
+	margin:0;
+	font-family:Tahoma, Verdana, Helvetica, sans-serif;
+}
+div.spacer
+{
+	clear: both; 
+	line-height:0; 
+	font-size:0;
+}
+ul{
+	list-style-type:none; font-size:0; line-height:0;
+	}
+a { 
+	text-decoration: none;
+}
+#div-wrapper
+{
+	width:778px;
+	height:auto;
+	margin:0 auto 0 auto;
+	padding:0;
+	background-image:url(/static/webshop/images/body-background.gif);
+	background-repeat:repeat-y;
+}
+/*---------------body-----------*/
+#mainbody{
+	background:url(/static/webshop/images/body_pic.jpg) no-repeat 0 0;
+
+	}
+/*------------left part srart-----*/
+#leftpart{
+	width:231px; 
+	float:left; 
+	padding:0 0 20px 33px; 
+	margin:518px 0 0 0;
+	}
+#leftpart ul{
+	list-style-type:none; font-size:0; line-height:0; margin:0 43px 0 0;
+	}
+#leftpart ul li{
+	background:url(/static/webshop/images/bullets.gif) no-repeat 6px 11px; border-bottom:#DED5BC 1px solid; padding:0 0 1px 37px;
+	height:30px; display:block;
+	}
+#leftpart ul li a{
+	text-decoration:none; color:#064065; background-color:#FFFFFF; line-height:30px; font-size:11px;
+	}
+#leftpart ul li a:hover{
+	text-decoration:underline;
+	}
+	
+/*--------------------------------right part---------------*/
+#rightpart
+{
+	width:486px; 
+	position:relative; 
+	padding:149px 0 20px 15px;
+	float:left;
+}
+#rightpart img.logo{
+	padding:0; 
+	margin:0; 
+	position:absolute; 
+	left:57px; 
+	top:20px; 
+	display:block; 
+	font-size:0; 
+	line-height:0;
+	}
+#rightpart h1{
+	padding:0; 
+	margin:0 0 150px 81px; 
+	font-size:23px; 
+	font-weight:bold; 
+	line-height:15px; 
+	color:#FFFFFF; 
+	background-color:inherit; 
+	display:block;
+	}
+#rightpart h2.welcom{
+	border-bottom:#CBCBCB 1px solid; padding:0 0 3px  0; margin:0 0 9px 0; display:block;
+	font:bold 16px/22px Arial, Helvetica, sans-serif; color:#333333; background-color:inherit;
+	}
+#rightpart h2.welcom span{
+	color:#FD4D00; background-color:inherit; font-size:22px; line-height:22px; padding:0; margin:0;
+	}
+	
+.body-text
+{
+	color:#686867;
+	background-color:#E8E8E8;
+	font-size:11px;
+}
+#rightpart ul.gallery{
+	/*height:161px; margin:18px 0 0 0;*/
+	}
+#rightpart ul.gallery li{
+	border:#C8C7C7 1px solid; 
+	padding:11px 12px;
+	font:bold 16px/18px "Helvetica Neue",Arial, Helvetica, sans-serif; 
+	margin:10px 10px 10px 10px;
+	float:left; 
+	color:#FF6C21;
+	text-align: center;
+	}
+#rightpart ul.gallery li.nopadding{
+	margin-right:0;
+	}
+#rightpart ul.gallery li img{
+	font-size:0; 
+	line-height:0; 
+	display:block;
+	}
+#rightpart ul.num{
+	height:18px; 
+	margin:11px 0 23px 0;
+	}
+#rightpart ul.num li{
+	float:left; 
+	padding:0 1px; 
+	color:#064065; 
+	background-color:inherit; 
+	font:normal 12px/18px Arial, Helvetica, sans-serif;
+	height:18px;
+	}
+#rightpart ul.num li.smallpad{
+	padding:0 9px;
+	}
+#rightpart ul.num li.bigpad{	
+	padding-right:20px;
+	}
+#rightpart ul.num li a{
+	text-decoration:underline; 
+	color:#064065; 
+	background-color:inherit; 
+	line-height:18px;
+}
+#rightpart ul.num li a:hover{
+	text-decoration:none; 
+	background-color:inherit; 
+	color:#FD4D00;
+	}
+#rightpart ul.cate{
+	width:162px; 
+	float:left; 
+	padding:0 0 26px 0;
+	}
+#rightpart ul.cate li{
+	display:block; 
+	background:url(/static/webshop/images/bullets-black.gif) no-repeat 0 7px; 
+	padding:0 0 0 27px;
+	}
+#rightpart ul.cate li a{
+	color:#064065; 
+	background-color:inherit; 
+	text-decoration:underline; 
+	font-size:11px; 
+	line-height:21px;
+	}
+#rightpart ul.cate li a:hover{
+	text-decoration:none;
+	}
+
+#footer {
+clear: both;
+/*margin-top: 2.5em;*/
+padding: .5em;
+border-top: #CBCBCB 1px solid; 
+}
+/*
+#footer{
+	border-top:#CBCBCB 1px solid; 
+	padding:14px 0 0 205px; 
+	margin:42px 0 30px 0; 
+	}
+	*/
+#footer ul{
+	height:18px;
+	}
+#footer ul li{
+	font-size:11px; 
+	color:#064065; 
+	background-color:inherit; 
+	line-height:18px; 
+	padding:0 5px; 
+	float:left;
+	}
+#footer ul li a{
+	text-decoration:none; 
+	color:#064065; 
+	background-color:inherit;
+	}
+#footer ul li a:hover{
+	text-decoration:underline;
+	}
+#footer p{
+	font-size:11px; 
+	text-align:center; 
+	color:#686867; 
+	background-color:inherit; 
+	padding:0 10px 0 0; 
+	line-height:16px;
+	}
+#footer p a{
+	text-decoration:underline; 
+	color:#686867; 
+	background-color:inherit;
+	}
+#footer p a:hover{
+	text-decoration:none;
+	}
+
+div.productImage {
+/*padding:5px;
+margin-top: 10px;
+margin-left: 10px;*/
+margin-right: 10px;
+margin-bottom:2px;
+float: left;
+text-align: center;
+}
+
+div.productdetail {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 12px;
+}
+
+div.productdetail h2 {
+	margin: 0 0 15px 81px;
+	text-align: left;
+	font-size: x-large;
+}
+
+div.productImage img {
+	width: 180px;
+	height: 120px;
+}
+
+div.description {
+	text-indent: 1.2em;
+	text-align: justify;
+}
+
+div.productreviews span.label {
+	float: left;
+	width: 80px;
+}
+
+
+.product_box {
+	float: left;
+	width: 220px;
+	height: 260px;
+	text-align: center;
+	margin: 0 10px 30px 0;
+	padding-bottom: 20px;
+	border-bottom: 1px dotted #ccc
+}
+
+.product_box img {
+	margin-bottom: 5px;
+}
+
+.product_box a img {
+	border:#C8C7C7 1px solid;
+	width: 200px; 
+	height: 130px; 
+}
+
+.product_box h3 {
+	font-size: 11px;
+	color: #000;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+.product_box .product_price {
+	color: #11bdd1;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+.product_box .addtocart {
+	float: left;
+	display: block;
+}
+.product_box .detail {
+	float: right;
+	display: block;
+}
+
+div.content_half.float_r { 
+	width: 250px 
+}
+
+.float_l { 
+float: left
+}
+
+.float_r {
+	margin-bottom: 2.0em;
+	margin-right: 1.0em;
+	float: right;
+}
+
+a.addtocart{ 
+	display: inline-block; 
+	width: 80px; 
+	height: 21px; 
+	line-height: 21px; 
+	text-align: center; 
+	font-size: 10px; 
+	font-weight: bold; 
+	color: #333; 
+	background: url(/static/webshop/images/templatemo_addtocart.png) 
+}
+a.detail{ 
+	display: inline-block; 
+	width: 64px; 
+	height: 20px; 
+	line-height: 20px; 
+	text-align: center; 
+	font-size: 10px; 
+	font-weight: bold; 
+	color: #333; 
+	background: url(/static/webshop/images/templatemo_detail.png) 
+}
+
+
+.cleaner { clear: both }
+.h10 { height: 10px }
+.h20 { height: 20px }
+.h30 { height: 30px }
+.h40 { height: 40px }
+.h50 { height: 50px }
