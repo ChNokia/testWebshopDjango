@@ -4,7 +4,7 @@ from django.db import models
 import datetime
 import random
 from django.conf import settings
-from django.contrib import auth
+from django.contrib.auth.models import User
 #from mptt.models import MPTTModel, TreeForeignKey
 from tinymce import models as tinymce_model
 
@@ -152,12 +152,23 @@ class ProductImages(models.Model):
 		verbose_name_plural = "Зображення"
 		verbose_name = "Зображення"
 
-class Customer(models.Model):
-	name = models.CharField(max_length = 150, blank = True, verbose_name = "Користувач")
-	#user = models.ForeignKey(User)
-	email = models.EmailField(max_length = 254, blank = True, verbose_name = "Email")
-	password = models.CharField(max_length = 250, blank = True, verbose_name = "Пароль")
+class Customer(User):
+	#name = models.CharField(max_length = 150, blank = True, verbose_name = "Користувач")
+	#user = models.ForeignKey(User, blank=True, null=True,
+							#verbose_name="Користувач БД")
+	#email = models.EmailField(max_length = 254, blank = False, verbose_name = "Email")
+	#password = models.CharField(max_length = 250, blank = False, verbose_name = "Пароль")
 	discaunt = models.DecimalField(max_digits = 4, default = 0, decimal_places = 2)
-	date_created = models.DateTimeField(default = datetime.datetime.now(), auto_now_add = True,
+	date_created = models.DateTimeField(auto_now_add = True,
 										verbose_name = "Дата регістрації")
-	date_visited = models.DateTimeField()
+	date_visited = models.DateTimeField(auto_now_add = True, verbose_name = "Дата регістрації")
+
+	def __unicode__(self):
+		return u'%s' % (self.name)
+
+	def get_email_address(self):
+		self.user.email
+
+	def set_email_address(self, email):
+		self.email = email
+		self.save()

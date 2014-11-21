@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from webshop.models import Category, Product, ProductImages
+from webshop.models import (
+							Category,
+							Customer,
+							Product,
+							ProductImages
+							)
 
 #class CatalogAdmin(admin.ModelAdmin):
 #	list_display = ('name', 'publisher', 'put_date')
@@ -24,8 +29,14 @@ class ProductAdmin(admin.ModelAdmin):
 	list_filter = ('category',)
 	search_fields = ['name']
 
+class CustomerAdmin(admin.ModelAdmin):
+	list_display = ('username', 'email', 'date_created')
+	#list_editable = ('email')
+	search_fields = ['name', 'email']
+
 #admin.site.register(Catalog, CatalogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductImages)
+admin.site.register(Customer, CustomerAdmin)
 

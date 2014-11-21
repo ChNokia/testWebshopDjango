@@ -1,25 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>{% block title %}{{ shop_name }}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/static/webshop/stylesheets/style.css">
-</head>
-<body>
-{% block login %}
+{% extends "product/base.html" %}
+{% block content %}
 	<div class="large-ofset-3 large-6 columns">
 		<form action="/auth/login/" method="post">
 			{% csrf_token %}
 			<label for="username">User Name</label>
 			<input type="text" name="username" id="username">
+			<br>
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password">
 			{% if login_error %}
 				<label class="error">{{ login_error }}</label>
 			{% endif %}
-			<input class="button" type="submit" value="Enter">
+			<input class="button" type="submit" value="Вхід">
+			<div class="registr">
+				<a href="/auth/register/">Регістрація</a>
+			</div>
 		</form>
 	</div>
 {% endblock %}
-</body>
-</html>

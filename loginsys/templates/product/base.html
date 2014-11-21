@@ -48,12 +48,14 @@
 			        	<h1>{% block header %}{{ shop_name }}{% endblock %}</h1>
 			        </a>
 			        <!--Template end-->
-					<h2 class="welcom"><span>Welcome</span> to our Online Shop  
-						{% if username %}
-							<a href="/auth/logout/"> Exit {{ username }}</a>
-						{% else %}
-							<a href="/auth/login/">Enter</a>
-						{% endif %}
+					<h2 class="welcom">
+						<span>Welcome, 
+							{% if username %}
+								<a href="/auth/logout/"> {{user.username}}.</a> Thanks for loging in.
+							{% else %}
+								new user. Please <a href="/auth/login/">log in.</a>
+							{% endif %}
+						</span>
 					</h2>
 					
 					{% block content %}

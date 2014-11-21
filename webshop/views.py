@@ -10,7 +10,9 @@ shop_name = 'My WebSHop'
 
 def index(request, template_name="product/product_list.html"):
 	object_list = Product.objects.all()
+	username = request.session.get('username', None)
 	context = { 'shop_name': shop_name,
+				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}
 
@@ -18,7 +20,9 @@ def index(request, template_name="product/product_list.html"):
 
 def products(request, template_name="product/product_list.html"):
 	object_list = Product.objects.all()
+	username = request.session.get('username', None)
 	context = { 'shop_name': shop_name,
+				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}
 
@@ -27,9 +31,11 @@ def products(request, template_name="product/product_list.html"):
 def product_detail(request, product_id):
 	try:
 		product = Product.objects.get(pk = product_id)
+		username = request.session.get('username', None)
 		context = { 'shop_name': shop_name,
-				'categorylist': Category.objects.all(),
-				'product': product}
+					'username': username,
+					'categorylist': Category.objects.all(),
+					'product': product}
 	except Product.DoesNotExist:
 		raise Http404
 
@@ -43,7 +49,9 @@ def category(request, category_id):
 		raise Http404
 
 	object_list = Product.objects.filter(category_id = category_id)
+	username = request.session.get('username', None)
 	context = { 'shop_name': shop_name,
+				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}
 
