@@ -1,6 +1,0 @@
-BEGIN;
-DROP TABLE "webshop_customer";
-DROP TABLE "webshop_productimages";
-DROP TABLE "webshop_product";
-DROP TABLE "webshop_category";
-COMMIT;

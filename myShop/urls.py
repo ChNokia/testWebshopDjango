@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-from django.conf import settings
 from django.contrib import admin
 
 admin.autodiscover()
@@ -21,3 +23,4 @@ if settings.DEBUG:
     #url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
 	#{'document_root': settings.MEDIA_ROOT}),
 )
+    

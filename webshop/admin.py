@@ -29,14 +29,37 @@ class ProductAdmin(admin.ModelAdmin):
 	list_filter = ('category',)
 	search_fields = ['name']
 
-class CustomerAdmin(admin.ModelAdmin):
-	list_display = ('username', 'email', 'date_created')
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+
+#class CustomerAdmin(UserAdmin):
+#	list_display = ('username', 'email', 'date_created')
 	#list_editable = ('email')
-	search_fields = ['name', 'email']
+#	search_fields = ['username', 'email']
+
+#	fieldsets = (
+ #       (None, {'fields': ('username', 'password')}),
+  #      (('Personal info'), {'fields': (
+   #             'first_name', 'last_name', 'email'
+    #        )}),
+     #   (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions')}),
+      #  (('Important dates'), {'fields': ('last_login', 'date_joined')}),
+       # (('Groups'), {'fields': ('groups',)}),
+    #)
+class CustomerInline(admin.StackedInline):
+	model = Customer
+	can_delete = False
+	verbose_name_plural = 'profile'
+
+class CustomerAdmin(UserAdmin):
+	inlines = (CustomerInline, )
+
+admin.site.unregister(User)
+admin.site.register(User, CustomerAdmin)
 
 #admin.site.register(Catalog, CatalogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductImages)
-admin.site.register(Customer, CustomerAdmin)
+#admin.site.register(Customer, CustomerAdmin)
 

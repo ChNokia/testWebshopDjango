@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -91,6 +92,13 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'webshop/media/')#BASE_DIR + '/webshop/media/'
 MEDIA_URL = '/media/'
+
+#AUTHENTICATION_BACKENDS = (
+ #   'webshop.auth_backends.CustomUserModelBackend',
+ #   'django.contrib.auth.backends.ModelBackend',
+#)
+
+#CUSTOM_USER_MODEL = 'webshop.models.Customer'
 
 TINYMCE_JS_URL = MEDIA_URL + "tinymce/media/tiny_mce/tiny_mce.js"
 TINYMCE_JS_ROOT = MEDIA_ROOT + "/tinymce/media/tiny_mce"

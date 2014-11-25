@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import patterns, url
 from django.conf import settings
+from django.conf.urls import patterns, url
 from django.conf.urls.static import static
 
-from webshop.models import Category, Product
 from webshop import views
+from webshop.models import Category, Product
 
 urlpatterns = patterns('',
 	url(r'^$', views.index),

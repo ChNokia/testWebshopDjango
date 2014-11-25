@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from django.db import models
 import datetime
-import random
+from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
-#from mptt.models import MPTTModel, TreeForeignKey
+from django.contrib.auth.models import User, UserManager
+import random
+
 from tinymce import models as tinymce_model
+
+from autoreletionsfields import AutoOneToOneField
+#from mptt.models import MPTTModel, TreeForeignKey
 
 def make_upload_path(instance, file_name, prefix = False):
 	n1 = random.randint(0, 10000)
@@ -152,23 +155,27 @@ class ProductImages(models.Model):
 		verbose_name_plural = "Зображення"
 		verbose_name = "Зображення"
 
-class Customer(User):
-	#name = models.CharField(max_length = 150, blank = True, verbose_name = "Користувач")
-	#user = models.ForeignKey(User, blank=True, null=True,
-							#verbose_name="Користувач БД")
-	#email = models.EmailField(max_length = 254, blank = False, verbose_name = "Email")
-	#password = models.CharField(max_length = 250, blank = False, verbose_name = "Пароль")
-	discaunt = models.DecimalField(max_digits = 4, default = 0, decimal_places = 2)
-	date_created = models.DateTimeField(auto_now_add = True,
-										verbose_name = "Дата регістрації")
-	date_visited = models.DateTimeField(auto_now_add = True, verbose_name = "Дата регістрації")
+# Create your models here.
+class Customer(models.Model):
+	user = AutoOneToOneField(User, related_name = 'custom_customer')
+	discount = models.DecimalField(max_digits = 4, default = 0, decimal_places = 2)
+
+	def __init__(self, *args, **kwargs):
+		super(Customer, self).__init__(*args, **kwargs)
 
 	def __unicode__(self):
-		return u'%s' % (self.name)
+		return u'%s' % (self.user.username)
 
 	def get_email_address(self):
-		self.user.email
+		return self.user.email
 
 	def set_email_address(self, email):
-		self.email = email
+		self.user.email = email
 		self.save()
+
+	def get_full_name(self):
+		return '%s %s' % (self.user.first_name, self.user.last_name)
+
+	class Meta:
+		verbose_name_plural = 'Users'
+		verbose_name = 'User'

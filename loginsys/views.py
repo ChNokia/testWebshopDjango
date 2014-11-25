@@ -1,15 +1,43 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.http import Http404
-from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.core.context_processors import csrf
+from django.forms import ModelForm
+from django.http import Http404
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
-from webshop.models import Category, Product
+from webshop.models import (
+							Category,
+							Customer,
+							Product
+							)
 
 shop_name = 'My WebSHop'
+
+class ProfileForm(UserCreationForm):
+	class Meta:
+		model = User
+		#exclude = ('discount')
+		fields = ('username', 'email')
+
+	def save(self, commit=True):
+		if not commit:
+			raise NotImplementedError("Can't create User and UserProfile without database save")
+
+		user = super(UserCreationForm, self).save(commit=False)
+
+		user.set_password(self.cleaned_data["password1"])
+
+		if commit:
+			user.save()
+
+		user_customer = Customer(user=user)
+		user_customer.save()
+
+		return user, user_customer
 
 def login(request, template_name="login.html"):
 	context = {}
@@ -19,26 +47,21 @@ def login(request, template_name="login.html"):
 	if request.POST and ('username' not in request.session):
 		username = request.POST.get('username', '')
 		password = request.POST.get('password', '')
-		user = auth.authenticate(username = username, password = password)
+		user = auth.authenticate(username = username,
+								password = password)
 
 		if user is not None:
 			if user.is_active:
 				auth.login(request, user)
 				request.session['username'] = username
+
 				return redirect('/')
-			else:
-				context['login_error'] = 'The password is valid, but the account has been disabled!'
+			
+			context['login_error'] = 'The password is valid, but the account has been disabled!'
 		else:
 			context['login_error'] = 'The user and password were incorrect.'
 
-		return render(request, template_name, context)
-	else:
-	#object_list = Product.objects.all()
-	#context = { 'shop_name': shop_name,
-	#			'categorylist': Category.objects.all(),
-	#			'object_list': object_list}
-
-		return render(request, template_name, context)
+	return render(request, template_name, context)
 
 def logout(request):
 	#try:
@@ -54,20 +77,25 @@ def register(request, template_name="register.html"):
 
 	context.update(csrf(request))
 
-	context['forms'] = UserCreationForm()
+	context['form'] = ProfileForm()
 
 	if request.POST:
-		new_user_form = UserCreationForm(request.POST)
+		new_user_form = ProfileForm(request.POST)
 
 		if new_user_form.is_valid():
 			new_user_form.save()
-			new_user = auth.authenticate(username = new_user_form.cleaned_data['username'],
-										password = new_user_form.cleaned_data['password2'])
+
+			username = new_user_form.cleaned_data['username']
+			password2 = new_user_form.cleaned_data['password2']
+			new_user = auth.authenticate(username = username,
+										password = password2)
+
 			auth.login(request, new_user)
+
 			request.session['username'] = new_user_form.cleaned_data['username']
 
 			return redirect('/')
-		else:
-			context['form'] = new_user_form
+		
+		context['form'] = new_user_form
 
 	return render(request, template_name, context)
