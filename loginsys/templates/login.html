@@ -1,20 +1,28 @@
 {% extends "product/base.html" %}
 {% block content %}
-	<div class="large-ofset-3 large-6 columns">
-		<form action="/auth/login/" method="post">
+	<div class="float-right">
+		<form id="login-form" action="/auth/login/" method="post">
 			{% csrf_token %}
-			<label for="username">User Name</label>
-			<input type="text" name="username" id="username">
+			<label for="username">Логін</label>
+			<div>
+				<input type="text" name="username" id="username">
+			</div>
 			<br>
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password">
+			<label for="password">Пароль</label>
+			<div>
+				<input type="password" name="password" id="password">
+			</div>
+			<div>
+				<input class="button" type="submit" value="Вхід">
+				<div class="register">
+					<a href="/auth/register/">Регістрація</a>
+				</div>
+
+			</div>
+			
 			{% if login_error %}
 				<label class="error">{{ login_error }}</label>
 			{% endif %}
-			<input class="button" type="submit" value="Вхід">
-			<div class="registr">
-				<a href="/auth/register/">Регістрація</a>
-			</div>
 		</form>
 	</div>
 {% endblock %}

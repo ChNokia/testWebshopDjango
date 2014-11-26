@@ -335,3 +335,82 @@ a.detail{
 .h30 { height: 30px }
 .h40 { height: 40px }
 .h50 { height: 50px }
+
+.login-box {
+	width:70%;
+	margin:0 auto;
+}
+.login-box .login-wrapper {
+	background-image: url(../images/rule.png);
+	background-position: 50% 0;
+	background-repeat: repeat-y;
+}
+#login-form .btn {margin:3% 0;}
+.login-box .float-left,
+.login-box .float-right {
+	width:40%;
+	padding:5%;
+}
+
+/* login box header */
+.login-box header {
+}
+
+/* login box right side desktop twitter / facebook etc. */
+.login-box ul {
+	margin:0 0 20px 0;
+	padding:0;
+}
+.login-box ul li {
+	margin:0 0 8px 0;
+	padding:0;
+	list-style:none
+}
+.login-box ul a img {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+.login-box ul a img:hover {
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+
+/*  forgot password hidden div on login page
+================================================== */
+.forgot-password {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom:40px;
+}
+
+/*  registration
+================================================== */
+.register-box {
+	width:85%;
+	margin:0 auto;
+}
+
+.register {
+	float: left;
+	padding-right: 40px;
+}
+
+.form-horizontal .control-label {
+    width: 120px;
+}
+
+.control-label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+}
+
+.form-horizontal .controls {
+    margin-left: 140px;
+}
