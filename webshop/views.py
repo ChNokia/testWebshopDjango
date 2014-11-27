@@ -4,14 +4,13 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from myShop import settings
 from webshop.models import Category, Product
-
-shop_name = 'My WebSHop'
 
 def index(request, template_name="product/product_list.html"):
 	object_list = Product.objects.all()
 	username = request.session.get('username', None)
-	context = { 'shop_name': shop_name,
+	context = { 'shop_name': settings.WEB_SITE_NAME,
 				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}
@@ -21,7 +20,7 @@ def index(request, template_name="product/product_list.html"):
 def products(request, template_name="product/product_list.html"):
 	object_list = Product.objects.all()
 	username = request.session.get('username', None)
-	context = { 'shop_name': shop_name,
+	context = { 'shop_name': settings.WEB_SITE_NAME,
 				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}
@@ -32,7 +31,7 @@ def product_detail(request, product_id):
 	try:
 		product = Product.objects.get(pk = product_id)
 		username = request.session.get('username', None)
-		context = { 'shop_name': shop_name,
+		context = { 'shop_name': settings.WEB_SITE_NAME,
 					'username': username,
 					'categorylist': Category.objects.all(),
 					'product': product}
@@ -50,7 +49,7 @@ def category(request, category_id):
 
 	object_list = Product.objects.filter(category_id = category_id)
 	username = request.session.get('username', None)
-	context = { 'shop_name': shop_name,
+	context = { 'shop_name': settings.WEB_SITE_NAME,
 				'username': username,
 				'categorylist': Category.objects.all(),
 				'object_list': object_list}

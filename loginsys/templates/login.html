@@ -1,6 +1,36 @@
 {% extends "product/base.html" %}
 {% block content %}
 	<div class="float-right">
+		<form id="login-form" action="/auth/login/" method="post" >
+			{% csrf_token %}
+			{% if login_error %}
+					<div class="error-login">
+						<label class="error">{{ login_error }}</label>
+					</div>
+			{% endif %}
+			<fieldset>
+				<div class="control-group-type-email">
+					<label class="control-label">Користувач *</label>
+					<div class="controls">
+						<input type="username" name="username" id="username_id">
+					</div>
+				</div>
+				<div class="control-group-type-password">
+					<label class="control-label">Пароль *</label>
+						<div class="controls">
+							<input type="password" name="password" id="password_id">
+						</div>
+				</div>
+			</fieldset>
+			
+			<div class="button-enter">
+				<input type="submit" value="Вхід">
+				
+				<a href="/auth/register/" class="register">Регістрація
+				</a>
+			</div>
+		</form>
+<!--				
 		<form id="login-form" action="/auth/login/" method="post">
 			{% csrf_token %}
 			<label for="username">Логін</label>
@@ -24,5 +54,6 @@
 				<label class="error">{{ login_error }}</label>
 			{% endif %}
 		</form>
+	-->
 	</div>
 {% endblock %}

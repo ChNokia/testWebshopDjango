@@ -9,19 +9,24 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from myShop import settings
 from webshop.models import (
 							Category,
 							Customer,
 							Product
 							)
 
-shop_name = 'My WebSHop'
-
 class ProfileForm(UserCreationForm):
+	def __init__(self, *args, **kwargs):
+		super(ProfileForm, self).__init__(*args, **kwargs)
+
+		self.fields['username'].help_text = None
+		self.fields['password2'].help_text = None
+
 	class Meta:
 		model = User
 		#exclude = ('discount')
-		fields = ('username', 'email')
+		fields = ("username", "email", "password1", "password2")
 
 	def save(self, commit=True):
 		if not commit:
@@ -40,7 +45,8 @@ class ProfileForm(UserCreationForm):
 		return user, user_customer
 
 def login(request, template_name="login.html"):
-	context = {}
+	context = { 'shop_name': settings.WEB_SITE_NAME,
+				'categorylist': Category.objects.all()}
 
 	context.update(csrf(request))
 
@@ -73,7 +79,8 @@ def logout(request):
 	return redirect('/')
 
 def register(request, template_name="register.html"):
-	context = {}
+	context = { 'shop_name': settings.WEB_SITE_NAME,
+				'categorylist': Category.objects.all()}
 
 	context.update(csrf(request))
 
