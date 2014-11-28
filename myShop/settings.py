@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webshop',
+    'cart',
+    'utils',
     'loginsys',
     'tinymce',
     'south',
@@ -59,7 +61,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.CacheMiddleware',
 )
 
-CACHE_BACKEND = 'locmem://'
+#CACHES = {
+#    'default': {
+ #       'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+  #  }
+#}
 
 ROOT_URLCONF = 'myShop.urls'
 
@@ -103,6 +109,11 @@ MEDIA_URL = '/media/'
 #)
 
 #CUSTOM_USER_MODEL = 'webshop.models.Customer'
+
+# List of processors used by RequestContext to populate the context.
+# Each one should be a callable that takes the request object as its
+# only parameter and returns a dictionary to add to the context.
+
 
 TINYMCE_JS_URL = MEDIA_URL + "tinymce/media/tiny_mce/tiny_mce.js"
 TINYMCE_JS_ROOT = MEDIA_ROOT + "/tinymce/media/tiny_mce"
@@ -172,6 +183,7 @@ TINYMCE_DEFAULT_CONFIG={
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
+    'utils.context_processors.webshop',
 )
 
 SUIT_CONFIG = {

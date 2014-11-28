@@ -1,0 +1,14 @@
+{% for object in object_list %}
+	<div class="product_box">
+        <h3>{{ object.name }}</h3>
+    	<a href={{ object.get_absolute_url }}>
+			{% load staticfiles %}
+			<img src="{% static object.photo.url %}" alt="" title="{{ object.name }}"/>
+		</a>
+		<p> 
+			{{ object.short_description|safe }}
+		</p>
+        
+      	<p class="product_price">{{object.price_in_ua}} грн</p>
+    </div>
+{% endfor %}

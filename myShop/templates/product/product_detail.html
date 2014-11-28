@@ -1,99 +1,53 @@
-{% extends "product/base.html" %}
-{% block content %}
-	<div class="float_r">
-        	<h2>Product Detail</h2>
-            	<div class="productImage">
-            		{% load staticfiles %}
-            		<a  href="{% static product.photo.url %}"><img src="{% static product.photo.url %}" alt="{{ product.name }}" />
-            		</a>
-            	</div>
-            <div class="content_half float_r">
-                <table>
-                	<tr>
-                		<td width="160">Name:</td>
-                		<td>{{ product.name }}</td>
-					</tr>
-                    <tr>
-                        <td width="160">Price:</td>
-                        <td>{{ product.price_in_ua }} грн</td>
-                    </tr>
-                    <tr>
-                        <td>Category:</td>
-                        <td>
-                        	<a href={% url webshop.views.category product.category_id %}>
-								{{ product.get_category_name }}
-							</a>
-						</td>
-                    </tr>
-                    <tr>
-                        <td>Model/ID:</td>
-                        <td>{{ product.id }}</td>
-                    </tr>
-                    <tr>
-                        <td>Manufacturer:</td>
-                        <td>{{ product.manufacturer }}</td>
-                    </tr>
-                    <tr>
-                    	<td>Quantity</td>
-                        <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>
-                    </tr>
-                </table>
-                <div class="cleaner h20"></div>
+<div class="float_r">
+	<h2>Product Detail</h2>
+    	<div class="productImage">
+    		{% load staticfiles %}
+    		<a  href="{% static product.photo.url %}"><img src="{% static product.photo.url %}" alt="{{ product.name }}" />
+    		</a>
+    	</div>
+    <div class="content_half float_r">
+        <table>
+        	<tr>
+        		<td width="160">Name:</td>
+        		<td>{{ product.name }}</td>
+			</tr>
+            <tr>
+                <td width="160">Price:</td>
+                <td>{{ product.price_in_ua }} грн</td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td>
+                	<a href={% url webshop.views.category product.category_id %}>
+						{{ product.get_category_name }}
+					</a>
+				</td>
+            </tr>
+            <tr>
+                <td>Model/ID:</td>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer:</td>
+                <td>{{ product.manufacturer }}</td>
+            </tr>
+            <tr>
+            	<td>Quantity</td>
+                <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>
+            </tr>
+        </table>
+        <div class="cleaner h20"></div>
 
-                <a href="/static/webshop/shoppingcart.html" class="addtocart">
-                </a>
+        <a href="/static/webshop/shoppingcart.html" class="addtocart">
+        </a>
 
-			</div>
-            <div class="cleaner h30"></div>
-            
-            <h2>Product Description</h2>
-            <div class="description">
-            	<p>
-            		{{ product.description|safe }}
-            	</p>
-            </div>
-    </div> 
-<!--
-		<div class="productdetail">
-			<div class="productImage">
-				{% load staticfiles %}
-				<img src="{% static product.photo.url %}" alt="{{ product.name }}" class="bn">
-				<p>{{ product.name }}</p>
-			</div>
-			<h2><span property="v:name">
-					{{ product.name }}
-				</span>
-			</h2>
-			Brand: 
-			<em>
-				<span property="v:brand">
-					{{ product.name }}
-				</span>
-			</em>
-			<br>
-			ID:
-			<em>
-				<span property="v:id">
-					{{ product.id }}
-				</span>
-			</em>
-			<br>
-			Category: 
-			<a href={% url webshop.views.category product.category_id %}>
-				<span property="v:category">
-					{{ product.get_category_name }}
-				</span>
-			</a>
-			<br>
-			Price: 
-			<span property="v:price">
-				{{ product.price_in_ua }} грн
-			</span>
-			<br>
-			Country: 
-			<span property="v:manufacturer">
-				{{ product.manufacturer }}
-			</span>
-		</div>
-	-->
-{% endblock %}
+	</div>
+    <div class="cleaner h30"></div>
+    
+    <h2>Product Description</h2>
+    <div class="description">
+    	<p>
+    		{{ product.description|safe }}
+    	</p>
+    </div>
+</div>

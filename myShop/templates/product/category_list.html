@@ -1,0 +1,5 @@
+{% for category in categorylist %}
+<li id="category_{{ category.id }}">
+	<a href={% url webshop.views.category category.id %} title={{ category.name }}>{{ category.name }}</a>
+</li>
+{% endfor %}
