@@ -70,11 +70,10 @@ def login(request, template_name="login.html"):
 	return render(request, template_name, context)
 
 def logout(request):
-	#try:
-	del request.session['username']
-	auth.logout(request)
-    #except KeyError:
-      #  pass
+	if request.session['username']:
+		del request.session['username']
+
+		auth.logout(request)
 
 	return redirect('/')
 
