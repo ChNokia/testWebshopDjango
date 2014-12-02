@@ -44,7 +44,7 @@ class ProfileForm(UserCreationForm):
 
 		return user, user_customer
 
-def login(request, template_name="login.html"):
+def login(request, template_name="login/login.html"):
 	context = { 'shop_name': settings.WEB_SITE_NAME,
 				'categorylist': Category.objects.all()}
 
@@ -77,7 +77,7 @@ def logout(request):
 
 	return redirect('/')
 
-def register(request, template_name="register.html"):
+def register(request, template_name="login/register.html"):
 	context = { 'shop_name': settings.WEB_SITE_NAME,
 				'categorylist': Category.objects.all()}
 

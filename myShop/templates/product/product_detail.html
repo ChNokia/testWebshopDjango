@@ -31,15 +31,20 @@
                 <td>Manufacturer:</td>
                 <td>{{ product.manufacturer }}</td>
             </tr>
-            <tr>
+            <!--<tr>
             	<td>Quantity</td>
                 <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>
-            </tr>
+            </tr> -->
         </table>
         <div class="cleaner h20"></div>
 
-        <a href="/static/webshop/shoppingcart.html" class="addtocart">
-        </a>
+        <!--<a href="/index/cart/" class="addtocart">
+        </a>-->
+        <form method="post" action="." class="cart">
+            {{ form.as_p }}
+            <br>
+            <input type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />
+        </form>
 
 	</div>
     <div class="cleaner h30"></div>

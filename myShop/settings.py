@@ -16,7 +16,9 @@ import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'myShop/templates'), )
+
 WEB_SITE_NAME = 'My WebSHop'
 
 # Quick-start development settings - unsuitable for production
@@ -44,9 +46,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webshop',
-    'cart',
     'utils',
     'loginsys',
+    'cart',
     'tinymce',
     'south',
 )
@@ -58,7 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.CacheMiddleware',
+    #'django.middleware.cache.CacheMiddleware',
 )
 
 #CACHES = {
@@ -221,8 +223,11 @@ SUIT_CONFIG = {
 }
 
 TEMPLATE_DIRS = (
-    BASE_DIR + 'loginsys/templates',
+    BASE_DIR + '/myShop/templates',
+    #BASE_DIR + '/loginsys/templates',
 )
+
+AUTH_PROFILE_MODULE = 'webshop.Customer'
 #STATICFILES_DIRS = (
  #   '/home/ubuntu/Desktop/Form_files/myShop/',
 #)

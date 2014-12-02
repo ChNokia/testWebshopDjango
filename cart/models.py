@@ -1,4 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
+
+import datetime
+
+from django.db import models
+from django.conf import settings
 
 from webshop.models import Product
 
@@ -29,3 +36,4 @@ class CartItem(models.Model):
 		self.quantity = self.quantity + int(quantity)
 
 		self.save()
+
