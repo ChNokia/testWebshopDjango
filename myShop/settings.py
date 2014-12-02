@@ -45,10 +45,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cart',
     'webshop',
     'utils',
     'loginsys',
-    'cart',
     'tinymce',
     'south',
 )
@@ -73,7 +73,7 @@ ROOT_URLCONF = 'myShop.urls'
 
 WSGI_APPLICATION = 'myShop.wsgi.application'
 
-
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 1
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 

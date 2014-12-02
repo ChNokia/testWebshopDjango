@@ -2,7 +2,7 @@
 
 from django.conf.urls import patterns, include, url
 
-from cart import views
+import views
 
 urlpatterns = patterns('',
 	url(r'^$', views.show_cart, name = 'show_cart'),

@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 
+import cart_operations as cart
 from myShop import settings
 from webshop.forms import ProductAddCartForm
 from webshop.models import (
@@ -15,8 +16,15 @@ from webshop.models import (
 							)
 
 def show_cart(request, template_name = 'cart/cart.html'):
+	cart_items = cart.get_cart_items(request)
+	print('cart_items = ', cart_items)
+	cart_item_count = cart_items[0].quantity
+
+	for cart_item in cart_items:
+		print('quantity = ', cart_item.quantity)
+		print('product_id = ', cart_item.product_id)
 	#form = ProductAddCartForm(request = request)
-	#form.product_id = 1
+	#form.quantity.widget['quantity'] = 4
 
 	return render_to_response(template_name, locals(),
 		context_instance = RequestContext(request))

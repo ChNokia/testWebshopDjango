@@ -2,11 +2,51 @@
 {% block content %}
 	<div class="float-right">
 		<table summary="Your Shopping Cart" id="shopping_cart">
-		<form method="post" action="." class="cart">
-            {{ form.as_p }}
-            <br />
-            <input type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />
-        </form>
+			<caption>Your Shopping Cart</caption>
+			<thead>
+				<tr>
+					<th scope="col">Product</th>
+					<th scope="col">Price</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th scope="col" class="right">Total</th>
+				</tr>
+			</thead>
+		<tbody>
+			{% if cart_items %}
+			{% for item in cart_items %}
+				<tr>
+					<td>
+						<a href="{{ item.get_absolute_url }}" class="cart">
+							{{ item.name }}
+						</a>
+					</td>
+					<td>{{ item.price }}</td>
+					<td class="right">
+						<form method="post" action="." class="cart">
+							<label for="quantity">Quantity:</label>
+							<input type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="2" class="quantity" maxlength="5" />
+							<input type="hidden" name="item_id" value="{{ item.id }}" />
+					</td>
+					<td>
+						<input type="submit" name="submit" value="Update" />
+						</form>
+					</td>
+					<td>
+						
+					</td>
+					<td class="right">{{ item.total }}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+		      <tr>
+					<td colspan="6" style="height:30px;">
+						Your cart is empty.
+					</td>
+				</tr>
+		{% endif %}
+		</tbody>
 	</table>
 	</div>
 {% endblock %}

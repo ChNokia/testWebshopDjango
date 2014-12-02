@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from django.core import urlresolvers
+from django.core.context_processors import csrf
 from django.http import Http404
 from django.http import (
 						HttpResponseRedirect,
@@ -9,6 +11,7 @@ from django.http import (
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 
+import cart.cart_operations as cart
 from myShop import settings
 from webshop.forms import ProductAddCartForm
 from webshop.models import (
@@ -31,18 +34,32 @@ def product_detail(request, product_id, template_name="product/product_list.html
 	except Product.DoesNotExist:
 		raise Http404
 
+	context = {}
+
+	context.update(csrf(request))
+
 	if request.POST:
 		post_data = request.POST.copy()
+		form = ProductAddCartForm(request, post_data)
 
-		#cart.add_to_cart(request)
+		print('request', request)
+		print('post_data', post_data)
+		print('form', form)
+		print('VALID FORM = ', form.is_valid())
+		if form.is_valid():
+			print('VALID FORM')
+			cart.add_to_cart(request, product_id)
 
-		url = urlresolvers.reverse('show_cart')
+			if request.session.test_cookie_worked():
+				request.session.delete_test_cookie()
 
-		return HttpResponseRedirect(url)
+			url = urlresolvers.reverse('show_cart')
+
+			return HttpResponseRedirect(url)
 	
 	form = ProductAddCartForm(request = request, label_suffix = ':')
-	form.product_id = product_id
 
+	request.session.set_test_cookie()
 	return render_to_response(template_name, locals(),
 		context_instance = RequestContext(request))
 

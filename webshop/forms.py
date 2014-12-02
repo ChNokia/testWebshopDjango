@@ -17,8 +17,8 @@ class ProductAddCartForm(forms.Form):
 										'invalid' : 'Please enter a valid quantity'},
 										min_value = 1
 								)
-	product_slug = forms.CharField(widget = forms.HiddenInput())
-	product_id = forms.IntegerField(widget = forms.HiddenInput())
+	#product_slug = forms.CharField(widget = forms.HiddenInput())
+	#product_id = forms.IntegerField(required = False)
 
 	def __init__(self, request = None, *args, **kwargs):
 		self.request = request
@@ -28,6 +28,6 @@ class ProductAddCartForm(forms.Form):
 	def clean(self):
 		if self.request:
 			if not self.request.session.test_cookie_worked():
-				raise forms.ValidationError('Coolies must be enabled.')
+				raise forms.ValidationError('Cookies must be enabled.')
 
-			return self.clean_data
+		return self.clean_data
