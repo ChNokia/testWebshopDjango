@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load cart_filters %}
 {% block content %}
 	<ul class="gallery">
 		{% for object in object_list %}
@@ -8,7 +9,7 @@
 				<br>
 				{{ object.name }}
 				{{object.manufacturer}}<br />
-				{{object.price_in_ua}} грн<br />
+				{{object.price_in_ua|currency}} грн<br />
 			</li>
 		{% endfor %}
 	</ul>

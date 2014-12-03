@@ -1,3 +1,4 @@
+{% load cart_filters %}
 {% for object in object_list %}
 	<div class="product_box">
         <h3>{{ object.name }}</h3>
@@ -9,6 +10,6 @@
 			{{ object.short_description|safe }}
 		</p>
         
-      	<p class="product_price">{{object.price_in_ua}} грн</p>
+      	<p class="product_price">{{object.price_in_ua|currency}}</p>
     </div>
 {% endfor %}

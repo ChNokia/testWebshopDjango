@@ -1,3 +1,5 @@
+{% load cart_filters %}
+
 <div class="float_r">
 	<h2>Product Detail</h2>
     	<div class="productImage">
@@ -13,7 +15,7 @@
 			</tr>
             <tr>
                 <td width="160">Price:</td>
-                <td>{{ product.price_in_ua }} грн</td>
+                <td>{{ product.price_in_ua|currency }}</td>
             </tr>
             <tr>
                 <td>Category:</td>
