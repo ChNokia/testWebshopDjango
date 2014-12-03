@@ -465,3 +465,11 @@ a.register {
 .error-login {
 	color: red;
 }
+ul.errorlist {
+	background-color: Red;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 10px 0px;
+	color: Black;
+	font-size: 14px;
+	line-height: normal;
+}

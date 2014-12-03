@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load cart_filters %}
+
 {% block content %}
 	<div class="float-right">
 		<table summary="Your Shopping Cart" id="shopping_cart">
@@ -22,7 +24,7 @@
 							{{ item.name }}
 						</a>
 					</td>
-					<td>{{ item.price }}</td>
+					<td>{{ item.price|currency }}</td>
 					<td class="right">
 						<form method="post" action="." class="cart">
 							<label for="quantity">Quantity:</label>

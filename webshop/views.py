@@ -39,18 +39,25 @@ def product_detail(request, product_id, template_name="product/product_list.html
 	context.update(csrf(request))
 
 	if request.POST:
-		post_data = request.POST.copy()
-		form = ProductAddCartForm(request, post_data)
+		if 'username' in request.session:
+			post_data = request.POST.copy()
+			form = ProductAddCartForm(request, post_data)
 
-		if form.is_valid():
-			cart.add_to_cart(request)
+			if form.is_valid():
+				cart.add_to_cart(request)
 
-			if request.session.test_cookie_worked():
-				request.session.delete_test_cookie()
+				if request.session.test_cookie_worked():
+					request.session.delete_test_cookie()
 
-			url = urlresolvers.reverse('show_cart')
+				url = urlresolvers.reverse('show_cart')
 
-			return HttpResponseRedirect(url)
+				return HttpResponseRedirect(url)
+
+			return render_to_response(template_name, locals(),
+		context_instance = RequestContext(request))
+
+		url = urlresolvers.reverse('login')
+		return HttpResponseRedirect(url)
 	
 	form = ProductAddCartForm(request = request, label_suffix = ':')
 	form.fields['product_id'].widget.attrs['value'] = product_id
