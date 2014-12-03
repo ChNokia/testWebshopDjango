@@ -18,7 +18,7 @@ class ProductAddCartForm(forms.Form):
 										min_value = 1
 								)
 	#product_slug = forms.CharField(widget = forms.HiddenInput())
-	#product_id = forms.IntegerField(widget = forms.HiddenInput())
+	product_id = forms.IntegerField(widget = forms.HiddenInput())
 
 	def __init__(self, request = None, *args, **kwargs):
 		self.request = request

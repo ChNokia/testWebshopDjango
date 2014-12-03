@@ -43,7 +43,7 @@ def product_detail(request, product_id, template_name="product/product_list.html
 		form = ProductAddCartForm(request, post_data)
 
 		if form.is_valid():
-			cart.add_to_cart(request, product_id)
+			cart.add_to_cart(request)
 
 			if request.session.test_cookie_worked():
 				request.session.delete_test_cookie()
@@ -53,6 +53,7 @@ def product_detail(request, product_id, template_name="product/product_list.html
 			return HttpResponseRedirect(url)
 	
 	form = ProductAddCartForm(request = request, label_suffix = ':')
+	form.fields['product_id'].widget.attrs['value'] = product_id
 
 	request.session.set_test_cookie()
 	return render_to_response(template_name, locals(),
