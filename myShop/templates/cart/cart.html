@@ -3,6 +3,7 @@
 	<div class="float-right">
 		<table summary="Your Shopping Cart" id="shopping_cart">
 			<caption>Your Shopping Cart</caption>
+			{% if cart_items %}
 			<thead>
 				<tr>
 					<th scope="col">Product</th>
@@ -14,7 +15,6 @@
 				</tr>
 			</thead>
 		<tbody>
-			{% if cart_items %}
 			{% for item in cart_items %}
 				<tr>
 					<td>

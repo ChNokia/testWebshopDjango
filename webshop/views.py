@@ -42,12 +42,7 @@ def product_detail(request, product_id, template_name="product/product_list.html
 		post_data = request.POST.copy()
 		form = ProductAddCartForm(request, post_data)
 
-		print('request', request)
-		print('post_data', post_data)
-		print('form', form)
-		print('VALID FORM = ', form.is_valid())
 		if form.is_valid():
-			print('VALID FORM')
 			cart.add_to_cart(request, product_id)
 
 			if request.session.test_cookie_worked():

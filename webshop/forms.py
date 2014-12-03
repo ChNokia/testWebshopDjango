@@ -18,7 +18,7 @@ class ProductAddCartForm(forms.Form):
 										min_value = 1
 								)
 	#product_slug = forms.CharField(widget = forms.HiddenInput())
-	#product_id = forms.IntegerField(required = False)
+	#product_id = forms.IntegerField(widget = forms.HiddenInput())
 
 	def __init__(self, request = None, *args, **kwargs):
 		self.request = request
@@ -30,4 +30,4 @@ class ProductAddCartForm(forms.Form):
 			if not self.request.session.test_cookie_worked():
 				raise forms.ValidationError('Cookies must be enabled.')
 
-		return self.clean_data
+		return self.cleaned_data

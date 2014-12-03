@@ -45,12 +45,11 @@ def get_cart_items(request):
 
 def add_to_cart(request, product_id):
     """ function that takes a POST request and adds a product instance to the current customer's shopping cart """
-    postdata = request.POST.copy()
+    post_data = request.POST.copy()
     # get product slug from post data, return blank if empty
-    #product_slug = postdata.get('product_slug','')
+    #product_slug = post_data.get('product_slug','')
     # get quantity added, return 1 if empty
-    quantity = postdata.get('quantity',1)
-    print('quantity = ', quantity)
+    quantity = post_data.get('quantity',1)
     product = get_object_or_404(Product, pk = product_id)
     # fetch the product or return a missing page error
     cart_products = get_cart_items(request)

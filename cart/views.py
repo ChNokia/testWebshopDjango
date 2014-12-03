@@ -18,7 +18,6 @@ from webshop.models import (
 def show_cart(request, template_name = 'cart/cart.html'):
 	cart_items = cart.get_cart_items(request)
 	print('cart_items = ', cart_items)
-	cart_item_count = cart_items[0].quantity
 
 	for cart_item in cart_items:
 		print('quantity = ', cart_item.quantity)
