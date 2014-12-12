@@ -10,12 +10,30 @@
 				<tr>
 					<th scope="col">Product</th>
 					<th scope="col">Price</th>
-					<th></th>
+					<th scope="col">Quantity</th>
 					<th></th>
 					<th></th>
 					<th scope="col" class="right">Total</th>
 				</tr>
 			</thead>
+			<tfoot>
+				<tr>
+					<th class="right" colspan="5">
+						Cart Subtotal:
+					</th>
+					<th class="right">
+						{{cart_subtotal|currency}}
+					</th>
+				</tr>
+				<tr>
+					<th class="right" colspan="6">
+						<form method="POST" action=".">
+							<input type="hidden" name="submit" value="Place Order" />
+							<input type="submit" alt="Place Order" value="Place Order" />
+						</form>
+					</th>
+				</tr>
+			</tfoot>
 		<tbody>
 			{% for item in cart_items %}
 				<tr>
@@ -25,11 +43,11 @@
 						</a>
 					</td>
 					<td>{{ item.price|currency }}</td>
-					<td class="right">
-						<form method="post" action="." class="cart">
-							<label for="quantity">Quantity:</label>
+					<td>
+						<form method="post" action="." >
 							<input type="text" name="quantity" value="{{ item.quantity }}" id="quantity" size="2" class="quantity" maxlength="5" />
 							<input type="hidden" name="item_id" value="{{ item.id }}" />
+						</form>
 					</td>
 					<td>
 						<input type="submit" name="submit" value="Update" />

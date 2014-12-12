@@ -21,6 +21,8 @@ def show_cart(request, template_name = 'cart/cart.html'):
 	for cart_item in cart_items:
 		print('quantity = ', cart_item.quantity)
 		print('product_id = ', cart_item.product_id)
+
+	cart_subtotal = cart.cart_subtotal(request)
 	#form = ProductAddCartForm(request = request)
 	#form.quantity.widget['quantity'] = 4
 

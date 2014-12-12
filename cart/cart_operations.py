@@ -70,3 +70,12 @@ def add_to_cart(request):
         ci.quantity = quantity
         ci.cart_id = _cart_id(request)
         ci.save()
+
+def cart_subtotal(request):
+    cart_total = decimal.Decimal('0.00')
+    cart_products = get_cart_items(request)
+
+    for cart_item in cart_products:
+        cart_total = cart_total + cart_item.product.price_in_ua * cart_item.quantity
+
+    return cart_total

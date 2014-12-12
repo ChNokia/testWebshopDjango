@@ -473,3 +473,18 @@ ul.errorlist {
 	font-size: 14px;
 	line-height: normal;
 }
+
+td input[type="text"] {
+	margin-bottom: 0px;
+}
+
+tfoot th {
+	height: 40px;
+}
+
+th.right, td.right {
+	text-align: right;
+}
+th input[type="submit"] {
+	float: right;
+}
