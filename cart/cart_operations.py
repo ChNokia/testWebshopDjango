@@ -79,3 +79,8 @@ def cart_subtotal(request):
         cart_total = cart_total + cart_item.product.price_in_ua * cart_item.quantity
 
     return cart_total
+
+def empty_cart(request):
+    user_cart = get_cart_items(request)
+
+    user_cart.delete()

@@ -166,6 +166,7 @@ class Customer(models.Model):
 	def __unicode__(self):
 		return u'%s' % (self.user.username)
 
+	#def get_customer_user(self)
 	def get_email_address(self):
 		return self.user.email
 

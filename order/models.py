@@ -44,8 +44,8 @@ class Order(models.Model):
 class OrderItem(models.Model):
 	product = models.ForeignKey('webshop.Product')
 	quantity = models.IntegerField(default = 1)
-	price = models.DecimalField(max_digits = 9,
-								decimal_places = 2)
+	#price = models.DecimalField(max_digits = 9,
+	#							decimal_places = 2)
 	order = models.ForeignKey(Order)
 
 	def __unicode__(self):
@@ -57,7 +57,7 @@ class OrderItem(models.Model):
 
 	@property
 	def total(self):
-	    self.quantity * self.price
+	    self.quantity * self.product.price_in_ua
 
 	def get_absolute_url(self):
 		return self.product.get_absolute_url()
