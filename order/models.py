@@ -41,6 +41,9 @@ class Order(models.Model):
 
 		return total
 
+	def str_status(self):
+		return self.ORDER_STATUSES[self.status - 1][1]
+
 class OrderItem(models.Model):
 	product = models.ForeignKey('webshop.Product')
 	quantity = models.IntegerField(default = 1)
@@ -57,7 +60,7 @@ class OrderItem(models.Model):
 
 	@property
 	def total(self):
-	    self.quantity * self.product.price_in_ua
+	    return self.quantity * self.product.price_in_ua
 
 	def get_absolute_url(self):
 		return self.product.get_absolute_url()

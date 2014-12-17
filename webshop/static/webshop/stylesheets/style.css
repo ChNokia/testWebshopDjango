@@ -474,6 +474,15 @@ ul.errorlist {
 	line-height: normal;
 }
 
+table {
+	width: 100%;
+}
+
+caption.order {
+	text-align: left;
+	font-weight:bold;
+}
+
 td input[type="text"] {
 	margin-bottom: 0px;
 }
@@ -485,6 +494,7 @@ tfoot th {
 th.right, td.right {
 	text-align: right;
 }
+
 th input[type="submit"] {
 	float: right;
 }

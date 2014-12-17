@@ -3,20 +3,34 @@
 
 {% block content %}
 	<div class="float-right">
-		<table summary="Your Shopping Cart" id="shopping_cart">
-			<caption>Your Shopping Cart</caption>
+		<table summary="Your order" id="shopping_cart">
 			{% if order %}
+			<caption class="order">Your order id: {{order.id}}
+				<br>
+				Your order status: {{order.str_status}}
+				<br>
+				Email: {{order.email}}
+				<br>
+				Phone: {{order.phone}}
+			</caption>
 			<thead>
 				<tr>
 					<th scope="col">Product</th>
 					<th scope="col">Price</th>
 					<th scope="col">Quantity</th>
-					<th></th>
-					<th></th>
 					<th scope="col" class="right">Total</th>
 				</tr>
 			</thead>
-			
+			<tfoot>
+				<tr>
+					<th class="right" colspan="3">
+						Order Subtotal:
+					</th>
+					<th class="right">
+						{{order_subtotal|currency}}
+					</th>
+				</tr>
+			</tfoot>
 		<tbody>
 			{% for item in order_items %}
 				<tr>
@@ -25,11 +39,10 @@
 							{{ item.name }}
 						</a>
 					</td>
-					<td>{{ item.product.price_in_ua|currency }}</td>
+					<td class="right">{{ item.product.price_in_ua|currency }}</td>
 					
-					<td>
-						
-					</td>
+					<td class="right">{{ item.quantity }}	</td>
+					<td class="right">{{ item.total|currency }}</td>
 					
 				</tr>
 			{% endfor %}

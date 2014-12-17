@@ -7,3 +7,22 @@ django-tinymce==1.5.1
 django-staticfiles==1.2.1
 south==0.8.1
 django-suit==0.2.3
+
+=======================
+sudo apt-get install libjpeg62-dev zlib1g-dev libfreetype6-dev
+sudo apt-get install python2.6-dev
+sudo easy_install pip
+sudo apt-get install python-pip python-dev build-essential
+sudo apt-get install python-pip
+sudo apt-get install python-setuptools python-dev build-essential 
+cd Django-1.4.16/
+sudo apt-get install django-tinymce
+sudo pip2.6 install django-tinymce
+sudo pip2.6 install django-mptt
+sudo pip2.6 install django-staticfiles
+sudo pip2.6 install south
+sudo pip2.6 install django-suit
+
+
+git --> http://habrahabr.ru/post/68341/
+

@@ -67,6 +67,7 @@ def show_orders(request, template_name = 'order/show_order.html'):
 def order_detail(request, order_id, template_name = 'order/order_detail.html'):
 	order = get_object_or_404(Order, pk = order_id)
 	order_items = OrderItem.objects.filter(order = order)
+	order_subtotal = order.total
 
 	return render_to_response(template_name, locals(),
 		context_instance = RequestContext(request))
