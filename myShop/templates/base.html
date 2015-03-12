@@ -4,7 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>{% block title %}{{ shop_name }}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="/static/webshop/stylesheets/style.css">
+<script type="text/javascript" src="/static/webshop/js/jquery14/jquery.min.js"></script>
 </head>
+{% load cache %}
 <body>
 <div id="div-wrapper">
 	<!--body part start -->
@@ -12,6 +14,7 @@
 			<!--left part srart -->
 				<div id="leftpart">
 					<!--Template beg-->
+					{% cache 5000 sidebar %}
 						{% block sidebar %}
 						{% block sidebar-categories %}
 						<ul>
@@ -19,6 +22,7 @@
 			            </ul>
 						{% endblock sidebar-categories %}
 						{% endblock sidebar %}
+					{% endcache %}
 					<!--Template end-->
 					<!--
 					<ul>
