@@ -1,0 +1,8 @@
+git checkout develope
+---work with code---
+git add --all
+git commit -m''
+git checkout master
+git merge --no-ff develope
+git push https://ChNokia@github.com/ChNokia/project
+
