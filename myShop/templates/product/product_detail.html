@@ -1,5 +1,6 @@
 {% load cart_filters %}
-
+{% load cache %}
+{% cache 5000 product product.id %}
 <div class="float_r">
 	<h2>Product Detail</h2>
     	<div class="productImage">
@@ -59,3 +60,4 @@
     	</p>
     </div>
 </div>
+{% endcache %}

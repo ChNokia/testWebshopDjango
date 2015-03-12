@@ -2,7 +2,17 @@
 {% load cart_filters %}
 {% block content %}
 	{% if object_list %}
-		{% include "product/products.html" %}
+	{% load cache %}
+		{% if category %}
+			{% cache 500 object_list category %}
+				{% include "product/products.html" %}
+			{% endcache %}
+		{% else %}
+			{% cache 5000 object_list %}
+				{% include "product/products.html" %}
+			{% endcache %}
+		{% endif %}
+		
 	{% elif product %}
 		{% include "product/product_detail.html" %}
 	{% endif %}
